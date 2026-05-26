@@ -98,7 +98,7 @@ export const Profile = () => {
             });
             if (user.profilePicture) {
                 const isFullUrl = user.profilePicture.startsWith("http");
-                setProfileImage(isFullUrl ? user.profilePicture : `http://localhost:5000${user.profilePicture}`);
+                setProfileImage(isFullUrl ? user.profilePicture : `${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${user.profilePicture}`);
             }
         }
     }, [user]);
@@ -191,7 +191,7 @@ export const Profile = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.post("http://localhost:5000/api/users/upload-kyc", formData, {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/users/upload-kyc`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
@@ -616,7 +616,7 @@ export const Profile = () => {
                                             </div>
                                         </div>
                                         <a
-                                            href={`http://localhost:5000${user.kycUrl}`}
+                                            href={`${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${user.kycUrl}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-xs font-bold text-[#2c3f5a] hover:underline"

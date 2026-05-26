@@ -177,7 +177,7 @@ export const AdminDocuments = () => {
                                                 <Eye className="w-4 h-4" />
                                             </button>
                                             {doc.documentUrl && (
-                                                <a href={`http://localhost:5000${doc.documentUrl}`} target="_blank" rel="noreferrer" className="p-1.5 text-gray-400 hover:text-green-400 hover:bg-green-500/10 rounded-lg transition-colors cursor-pointer" title="Download">
+                                                <a href={`${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${doc.documentUrl}`} target="_blank" rel="noreferrer" className="p-1.5 text-gray-400 hover:text-green-400 hover:bg-green-500/10 rounded-lg transition-colors cursor-pointer" title="Download">
                                                     <Download className="w-4 h-4" />
                                                 </a>
                                             )}
@@ -279,7 +279,7 @@ export const AdminDocuments = () => {
                             </div>
                             <div className="flex items-center gap-2">
                                 {previewDoc.documentUrl && (
-                                    <a href={`http://localhost:5000${previewDoc.documentUrl}`} target="_blank" rel="noreferrer" className="p-1.5 text-gray-400 hover:text-white bg-gray-800 rounded-md transition-colors" title="Download">
+                                    <a href={`${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${previewDoc.documentUrl}`} target="_blank" rel="noreferrer" className="p-1.5 text-gray-400 hover:text-white bg-gray-800 rounded-md transition-colors" title="Download">
                                         <Download className="w-4 h-4" />
                                     </a>
                                 )}
@@ -294,7 +294,7 @@ export const AdminDocuments = () => {
                         <div className="flex-1 bg-[#111111] flex items-center justify-center relative overflow-hidden p-6">
                             {previewDoc.documentUrl ? (
                                 <iframe 
-                                    src={`http://localhost:5000${previewDoc.documentUrl}`} 
+                                    src={`${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${previewDoc.documentUrl}`} 
                                     className="w-full h-full rounded-lg border border-gray-800"
                                     title="Document Preview"
                                 />

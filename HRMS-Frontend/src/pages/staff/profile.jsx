@@ -81,7 +81,7 @@ export const StaffProfile = () => {
             if (user.profilePicture) {
                 // Support full URL or relative URL paths
                 const isFullUrl = user.profilePicture.startsWith("http");
-                setProfileImage(isFullUrl ? user.profilePicture : `http://localhost:5000${user.profilePicture}`);
+                setProfileImage(isFullUrl ? user.profilePicture : `${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${user.profilePicture}`);
             }
         }
     }, [user]);

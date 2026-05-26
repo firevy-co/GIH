@@ -77,7 +77,7 @@ export const AdminSettings = () => {
             setMaintenanceMode(!!settings.maintenanceMode);
             if (settings.websiteLogo) {
                 const isFullUrl = settings.websiteLogo.startsWith("http");
-                setLogoPreview(isFullUrl ? settings.websiteLogo : `http://localhost:5000${settings.websiteLogo}`);
+                setLogoPreview(isFullUrl ? settings.websiteLogo : `${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${settings.websiteLogo}`);
             }
         }
     }, [settings]);

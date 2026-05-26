@@ -253,7 +253,7 @@ export const StaffDocuments = () => {
                                                 </button>
                                                 {doc.documentUrl && (
                                                     <a 
-                                                        href={`http://localhost:5000${doc.documentUrl}`} 
+                                                        href={`${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${doc.documentUrl}`} 
                                                         target="_blank" 
                                                         rel="noopener noreferrer" 
                                                         className="p-2 bg-gray-800 hover:bg-green-500 hover:text-white text-gray-400 rounded-lg transition-colors border border-gray-700 hover:border-green-500 cursor-pointer" title="Download">
@@ -400,7 +400,7 @@ export const StaffDocuments = () => {
                             )}
                             {previewDoc.documentUrl && (
                                 <a 
-                                    href={`http://localhost:5000${previewDoc.documentUrl}`} 
+                                    href={`${(import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/api$/, "")}${previewDoc.documentUrl}`} 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
                                     className="bg-gray-800/80 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors backdrop-blur-sm border border-gray-600 flex items-center gap-2"
